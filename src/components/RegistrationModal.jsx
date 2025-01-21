@@ -67,7 +67,9 @@ export default function RegistrationModal({ onClose }) {
           </button>
           <h2 className="text-xl font-bold mb-4">Registration Successful!</h2>
           <p>Your 4-digit PIN is:</p>
-          <div className="text-3xl font-bold my-4 text-center">{generatedPin}</div>
+          <div className="text-3xl font-bold my-4 text-center">
+            {generatedPin}
+          </div>
           <p className="mb-4 text-center">
             Please keep this PIN safe. You’ll need it to check in each day.
           </p>
@@ -91,111 +93,115 @@ export default function RegistrationModal({ onClose }) {
         >
           &times;
         </button>
-        <h2 className="text-xl font-bold mb-4">Register for KCC 2024</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block mb-1 font-medium">Full Name</label>
-            <input
-              type="text"
-              className="w-full border border-gray-300 rounded px-3 py-2"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">Phone Number</label>
-            <input
-              type="tel"
-              className="w-full border border-gray-300 rounded px-3 py-2"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">Email</label>
-            <input
-              type="email"
-              className="w-full border border-gray-300 rounded px-3 py-2"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">Age Range</label>
-            <select
-              className="w-full border border-gray-300 rounded px-3 py-2"
-              value={ageRange}
-              onChange={(e) => setAgeRange(e.target.value)}
-              required
-            >
-              <option value="">Select an option</option>
-              <option value="Under 18">Under 18</option>
-              <option value="18-24">18-24</option>
-              <option value="25-34">25-34</option>
-              <option value="35-44">35-44</option>
-              <option value="45+">45+</option>
-            </select>
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">Are you a member of this church?</label>
-            <select
-              className="w-full border border-gray-300 rounded px-3 py-2"
-              value={isMember}
-              onChange={(e) => setIsMember(e.target.value)}
-              required
-            >
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">How did you hear about the conference?</label>
-            <input
-              type="text"
-              className="w-full border border-gray-300 rounded px-3 py-2"
-              value={howHeard}
-              onChange={(e) => setHowHeard(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">Address</label>
-            <input
-              type="text"
-              className="w-full border border-gray-300 rounded px-3 py-2"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">Gender</label>
-            <select
-              className="w-full border border-gray-300 rounded px-3 py-2"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              required
-            >
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
+          <h2 className="text-xl font-bold mt-10">Register for KCC 2025</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block mb-1 font-medium">Full Name</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-medium">Phone Number</label>
+              <input
+                type="tel"
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-medium">Email</label>
+              <input
+                type="email"
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-medium">Age Range</label>
+              <select
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                value={ageRange}
+                onChange={(e) => setAgeRange(e.target.value)}
+                required
+              >
+                <option value="">Select an option</option>
+                <option value="Under 18">Under 18</option>
+                <option value="18-24">18-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45+">45+</option>
+              </select>
+            </div>
+            <div>
+              <label className="block mb-1 font-medium">
+                Are you a member of this church?
+              </label>
+              <select
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                value={isMember}
+                onChange={(e) => setIsMember(e.target.value)}
+                required
+              >
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div>
+              <label className="block mb-1 font-medium">
+                How did you hear about the conference?
+              </label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                value={howHeard}
+                onChange={(e) => setHowHeard(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-medium">Address</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-medium">Gender</label>
+              <select
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                required
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
 
-          <button
-            type="submit"
-            className={`mt-4 w-full py-2 rounded text-white ${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
-            }`}
-            disabled={loading}
-          >
-            {loading ? "Submitting..." : "Submit"}
-          </button>
-        </form>
+            <button
+              type="submit"
+              className={`mt-4 w-full py-2 rounded text-white ${
+                loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-blue-600 hover:bg-blue-700"
+              }`}
+              disabled={loading}
+            >
+              {loading ? "Submitting..." : "Submit"}
+            </button>
+          </form>
       </div>
     </div>
   );
