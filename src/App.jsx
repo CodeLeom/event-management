@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import RegistrationModal from './components/RegistrationModal';
 import CheckInModal from './components/CheckInModal';
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
 
 function App() {
   const [showRegisterModal, setShowRegisterModal] = useState(false);
@@ -8,6 +10,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between p-4 bg-gray-300">
+      <Header />
       <div className="flex-grow flex flex-col items-center justify-center">
         <div className="w-4/5 max-w-2xl bg-white p-8 rounded shadow">
           <h1 className="text-3xl font-bold mb-4 text-center">KCC 2025 Conference</h1>
@@ -31,11 +34,7 @@ function App() {
         </div>
       </div>
 
-      <footer className="bg-gray-800 text-white py-4 text-center">
-        <p className="text-sm">
-          &copy; 2025, powered by <a href="https://leomtechnologies.com" target='_blank' rel="noopener noreferrer" className="font-bold hover:text-blue-300">Leom Technologies Limited</a>.
-        </p>
-      </footer>
+      <Footer />
 
       {/* Modals */}
       {showRegisterModal && (
