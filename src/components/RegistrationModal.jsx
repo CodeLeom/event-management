@@ -5,7 +5,6 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 export default function RegistrationModal({ onClose }) {
-  // Form fields
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -15,8 +14,8 @@ export default function RegistrationModal({ onClose }) {
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("Male");
 
-  // UI states
-  const [loading, setLoading] = useState(false); // Loader state
+
+  const [loading, setLoading] = useState(false);
   const [generatedPin, setGeneratedPin] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -28,7 +27,7 @@ export default function RegistrationModal({ onClose }) {
   // Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       const pin = generatePin();
@@ -53,7 +52,7 @@ export default function RegistrationModal({ onClose }) {
     } catch (error) {
       console.error("Registration Error:", error);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
