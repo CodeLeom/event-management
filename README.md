@@ -1,5 +1,3 @@
-Here is the improved README with the requested icons:
-
 # Kingdom Come Conference (KCC) 
 
 KCC is an annual conference organized by [New Estate Baptist Church, TCI Dutse](https://www.youtube.com/@TCInebcabuja).
