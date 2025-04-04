@@ -3,6 +3,20 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
 
+// Function to mask sensitive data
+const maskData = (data) => {
+  const maskedEmail = data.email.replace(/(^.)([^@]*)(@.*)/, '$1*****$3');
+  const maskedPhone = data.phone_number.replace(/(\d{3})\d{5}(\d{2})/, '$1*****$2');
+  const maskedAddress = data.address.replace(/(.{3})(.*)(.{3})/, '$1*****$3');
+  return {
+    ...data,
+    email: maskedEmail,
+    phone_number: maskedPhone,
+    address: maskedAddress,
+  };
+}
+
+
 export default function RegistrationModal({ onClose }) {
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -29,22 +43,25 @@ export default function RegistrationModal({ onClose }) {
 
     try {
       const pin = generatePin();
-      const { error } = await supabase 
-        .from("registrations")
-        .insert([{
+      const userData ={
         full_name: fullName,
         phone_number: phoneNumber,
         email: email,
         age_range: ageRange,
         is_member: isMember,
         how_heard: howHeard,
-        address: address,
+        address: address, 
         gender: gender,
         pin: pin,
         days_checked_in: [],
         created_at: new Date(),
-      }
-    ]);
+      };
+
+      const maskedData = maskData(userData);
+      const { error } = await supabase 
+        .from("registrations")
+        .insert([maskedData]);
+        
       if (error) throw error;
       setGeneratedPin(pin);
       setIsSubmitted(true);
