@@ -41,7 +41,7 @@ export default function RegistrationModal({ onClose }) {
         address: address,
         gender: gender,
         pin: pin,
-        days_Checked_In: [],
+        days_checked_in: [],
         created_at: new Date(),
       }
     ]);
