@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { supabase } from "../supabaseClient";
 
 export default function RegistrationModal({ onClose }) {
   const [fullName, setFullName] = useState("");
@@ -30,19 +29,23 @@ export default function RegistrationModal({ onClose }) {
 
     try {
       const pin = generatePin();
-      await addDoc(collection(db, "registrations"), {
-        fullName,
-        phoneNumber,
-        email,
-        ageRange,
-        isMember,
-        howHeard,
-        address,
-        gender,
-        pin,
-        daysCheckedIn: [],
-        createdAt: serverTimestamp(),
-      });
+      const { error } = await supabase 
+        .from("registrations")
+        .insert([{
+        full_name: fullName,
+        phone_number: phoneNumber,
+        email: email,
+        age_range: ageRange,
+        is_member: isMember,
+        how_heard: howHeard,
+        address: address,
+        gender: gender,
+        pin: pin,
+        days_Checked_In: [],
+        created_at: new Date(),
+      }
+    ]);
+      if (error) throw error;
       setGeneratedPin(pin);
       setIsSubmitted(true);
 
