@@ -1,14 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import { db } from '../firebaseConfig';
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  updateDoc,
-  arrayUnion
-} from 'firebase/firestore';
+import { supabase } from '../supabaseClient';
 
 export default function CheckInModal({ onClose }) {
   const [pinInput, setPinInput] = useState('');
@@ -23,19 +15,18 @@ export default function CheckInModal({ onClose }) {
 
     try {
       // Find the user by PIN
-      const colRef = collection(db, 'registrations');
-      const q = query(colRef, where('pin', '==', pinInput));
-      const querySnap = await getDocs(q);
+      const { data, error } = await supabase
+        .from("registrations")
+        .select("*")
+        .eq("pin", pinInput)
+        .single();
 
-      if (querySnap.empty) {
+      if (error) {
         setCheckInMessage('No registration found with that PIN.');
         return;
       }
 
-      // Assuming only one document matches the PIN
-      const docRef = querySnap.docs[0].ref;
-      const data = querySnap.docs[0].data();
-      const daysCheckedIn = data.daysCheckedIn || [];
+      const daysCheckedIn = data.days_Checked_in || [];
 
       if (daysCheckedIn.length >= 4) {
         setCheckInMessage('You have already checked in for all 4 days.');
@@ -44,9 +35,15 @@ export default function CheckInModal({ onClose }) {
 
       // Add next day to daysCheckedIn array
       const nextDay = daysCheckedIn.length + 1;
-      await updateDoc(docRef, {
-        daysCheckedIn: arrayUnion(nextDay)
-      });
+      const { error: updateError } = await supabase
+        .from("registrations")
+        .update({ days_Checked_in: [...daysCheckedIn, nextDay] })
+        .eq("pin", pinInput);
+        
+      if (updateError) {
+        setCheckInMessage('Error updating check-in status.');
+        return;
+      }
 
       setCheckInMessage(`Check-in successful for Day ${nextDay}!`);
       setPinInput('');
