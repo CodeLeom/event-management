@@ -6,7 +6,7 @@ function Header() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             {/* <img src="/logo.png" alt="Logo" className="h-8 w-8" /> */}
-            <span className="font-bold text-xl">KCC 2025</span>
+            <span className="font-bold text-xl">RegCheck</span>
           </div>
         </div>
       </header>

@@ -93,7 +93,7 @@ export default function RegistrationModal({ onClose }) {
         >
           &times;
         </button>
-          <h2 className="text-xl font-bold mt-10">Register for KCC 2025</h2>
+          <h2 className="text-xl font-bold mt-10">Register for the Conference</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block mb-1 font-medium">Full Name</label>
@@ -143,7 +143,7 @@ export default function RegistrationModal({ onClose }) {
             </div>
             <div>
               <label className="block mb-1 font-medium">
-                Are you a member of this church?
+                Are you a member of our community?
               </label>
               <select
                 className="w-full border border-gray-300 rounded px-3 py-2"
@@ -187,6 +187,7 @@ export default function RegistrationModal({ onClose }) {
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
+                <option value="Others">Others</option>
               </select>
             </div>
 

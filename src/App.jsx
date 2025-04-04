@@ -13,9 +13,9 @@ function App() {
       <Header />
       <div className="flex-grow flex flex-col items-center justify-center">
         <div className="w-4/5 max-w-2xl bg-white p-8 rounded shadow">
-          <h1 className="text-3xl font-bold mb-4 text-center">KCC 2025 Conference</h1>
+          <h1 className="text-3xl font-bold mb-4 text-center">Conference Registration & Check-In</h1>
           <p className="text-center mb-8">
-            Welcome to the Kingdom Come Conference 2025! Join us for four days of inspiring sessions, worship, and fellowship.
+            Welcome to this year&apos;s Conference! Join us for a four days of inspiring sessions, networking, and learning.
           </p>
           <div className="flex justify-center space-x-4">
             <button
