@@ -26,7 +26,7 @@ export default function CheckInModal({ onClose }) {
         return;
       }
 
-      const daysCheckedIn = data.days_Checked_in || [];
+      const daysCheckedIn = data.days_checked_in || [];
 
       if (daysCheckedIn.length >= 4) {
         setCheckInMessage('You have already checked in for all 4 days.');
@@ -37,9 +37,9 @@ export default function CheckInModal({ onClose }) {
       const nextDay = daysCheckedIn.length + 1;
       const { error: updateError } = await supabase
         .from("registrations")
-        .update({ days_Checked_in: [...daysCheckedIn, nextDay] })
+        .update({ days_checked_in: [...daysCheckedIn, nextDay] })
         .eq("pin", pinInput);
-        
+
       if (updateError) {
         setCheckInMessage('Error updating check-in status.');
         return;
