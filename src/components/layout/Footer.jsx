@@ -6,12 +6,12 @@ function Footer() {
         <p className="text-sm">
           &copy; {year}, powered by{" "}
           <a
-            href="https://leomofthings.com"
+            href="https://leomtechnologies.com"
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold hover:text-blue-300"
           >
-            Leomofthings
+            Leom Technologies
           </a>
           .
         </p>
